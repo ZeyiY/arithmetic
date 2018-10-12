@@ -67,6 +67,13 @@ public class SumOfTwoNum {
 
     }
 
+    /**
+     * 哈希表单次循环
+     * @param nums
+     * @param target
+     * @return
+     * @throws IllegalArgumentException
+     */
     private static int[] twoSumHashTableOne(int[] nums,int target) throws IllegalArgumentException{
 
         Map<Integer,Integer> map = new HashMap<>();
