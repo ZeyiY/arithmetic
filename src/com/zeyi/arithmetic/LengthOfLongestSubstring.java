@@ -1,6 +1,8 @@
 package com.zeyi.arithmetic;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -18,6 +20,8 @@ public class LengthOfLongestSubstring {
 
       int l =  lengthOfLongestSubstring("abcabcbb");
       System.out.println("l:"+l);
+      System.out.println("lengthOfLongestSubstringSlide:"+lengthOfLongestSubstringSlide("abcabcbb"));
+      System.out.println("lengthOfLongestSubstringOptimizeSlide:"+lengthOfLongestSubstringOptimizeSlide("abcabcbb"));
     }
 
     /**
@@ -44,5 +48,46 @@ public class LengthOfLongestSubstring {
             set.add(ch);
         }
         return true;
+    }
+
+
+    /**
+     * 滑动窗口 法
+     * @param s
+     * @return
+     */
+    public static int lengthOfLongestSubstringSlide(String s){
+        int n = s.length();
+        Set<Character> characters = new HashSet<>();
+        int i=0,j=0,ans = 0;
+        while (i<n&&j<n){
+            if (!characters.contains(s.charAt(j))){
+                characters.add(s.charAt(j++));
+                ans = Math.max(ans,j-i);
+            }else{
+                characters.remove(s.charAt(i++));
+            }
+        }
+        return ans;
+    }
+
+
+    /**
+     * 优化滑动窗口 法
+     * @param s
+     * @return
+     */
+    public static int lengthOfLongestSubstringOptimizeSlide(String s){
+        int n = s.length();
+        Map<Character, Integer> map = new HashMap<>();
+        int ans = 0;
+        for (int i=0,j=0;j<n;j++){
+            if (map.containsKey(s.charAt(j))){
+                i = Math.max(map.get(s.charAt(j)),i);
+            }
+            ans = Math.max(ans,j-i+1);
+            map.put(s.charAt(j),j+1);
+        }
+        return ans;
     }
 }
