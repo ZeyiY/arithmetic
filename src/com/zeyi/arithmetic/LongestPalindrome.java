@@ -13,6 +13,9 @@ package com.zeyi.arithmetic;
 
  输入: "cbbd"
  输出: "bb"
+
+
+ https://segmentfault.com/a/1190000008484167
  */
 public class LongestPalindrome {
     public static void main(String args[]){
@@ -32,7 +35,7 @@ public class LongestPalindrome {
         for (int i = 0;i<s.length();i++){
             for (int j=i;j<=s.length();j++){
                 String s1 = s.substring(i,j);
-                if (checkPalindrome(s1)){
+                if (s1.length()>st.length()&&checkPalindrome(s1)){
                     if (s1.length()>st.length()){
                         st = s1;
                     }
