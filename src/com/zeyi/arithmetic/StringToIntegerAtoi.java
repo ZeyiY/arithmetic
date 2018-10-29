@@ -78,7 +78,7 @@ public class StringToIntegerAtoi {
         }catch (Exception e){
 
             if (string.charAt(0)==45){
-                num  = -2147483648;;
+                num  = -2147483648;
             }else{
                 num = 2147483647;
             }
